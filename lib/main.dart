@@ -1,6 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:workmanager/sharedPrefs.dart';
 
 import 'MyHomePage.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        textTheme: GoogleFonts.nunitoTextTheme(),
         appBarTheme: const AppBarTheme(
             toolbarHeight: 65, shape: RoundedRectangleBorder()),
         pageTransitionsTheme: const PageTransitionsTheme(
@@ -38,10 +40,30 @@ class MyApp extends StatelessWidget {
             ),
           },
         ),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.blue, surfaceTint: Colors.transparent),
         useMaterial3: true,
       ),
-      darkTheme: ThemeData.dark(),
+      darkTheme: ThemeData(
+        textTheme: GoogleFonts.nunitoTextTheme(),
+        appBarTheme: const AppBarTheme(
+            toolbarHeight: 65, shape: RoundedRectangleBorder()),
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: {
+            TargetPlatform.android: SharedAxisPageTransitionsBuilder(
+              transitionType: SharedAxisTransitionType.horizontal,
+            ),
+            TargetPlatform.iOS: SharedAxisPageTransitionsBuilder(
+              transitionType: SharedAxisTransitionType.horizontal,
+            ),
+          },
+        ),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.blue,
+            brightness: Brightness.dark,
+            surfaceTint: Colors.transparent),
+        useMaterial3: true,
+      ),
       themeMode: ThemeMode.system,
       home: const MyHomePage(),
     );
